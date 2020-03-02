@@ -3,10 +3,10 @@
 # modules
 import pygame, assets.gui.gui as gui
 
-# library for game controls
+# control library
 from pygame.locals import *
 
-# setup game environment
+# initialize game environment
 pygame.init(); gameFramerate = pygame.time.Clock()
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -18,9 +18,8 @@ gameRunning = True
 while gameRunning == True:
     gameFramerate.tick(60)
 
-    # game event queue
+    # event queue
     for event in pygame.event.get():
-
         # quit on ESCAPE key or window close
         if event.type == KEYDOWN:
             # ESCAPE key
@@ -32,16 +31,17 @@ while gameRunning == True:
         
         # build_ change texture on MOUSEBUTTONDOWN
         elif event.type == MOUSEBUTTONDOWN:
-            if gui.BoardSquare0().rect.collidepoint(pygame.mouse.get_pos()):
-                square = pygame.image.load("assets/gui/boardsquare2.png")
-                square2 = gui.BoardSquare0(square)
+            if board_back0_rect.rect.collidepoint(pygame.mouse.get_pos()):
+                print('TEST')
                    
     # render background and grid
     gameWindow.blit(gui.Background0().surf, gui.Background0())
     board_back0 = pygame.Surface((320, 240))
+    board_back0_rect = board_back0.get_rect()
     board_back0.fill((83, 125, 117))
     gameWindow.blit(board_back0, (160, 145))
 
+    # draw grid over board_back0 rect
     for x in range(0, 8):
         for y in range(0, 6):
             gameWindow.blit(gui.Square0().surf, ((x + 4) * 40, (y + 3) * 42))
