@@ -20,7 +20,6 @@ for sprite_pos in gridCoords:
     gameWindow.blit(gui.Square0().surf, gridCoords[sprite_pos])
 
 # main loop
-clicked = False
 gameRunning = True
 while gameRunning == True:
     gameFramerate.tick(30)   
@@ -32,10 +31,10 @@ while gameRunning == True:
 
         # quit on ESCAPE key or window close
         if event.type == KEYDOWN:
-            # ESCAPE key
+            # on ESCAPE key
             if event.key == K_ESCAPE:
                 gameRunning = False
-        # mouse window close
+        # on mouse click
         elif event.type == QUIT:
             gameRunning = False
         # change grid image based on mouse position
@@ -45,60 +44,60 @@ while gameRunning == True:
             # prepare random item or monster on click
             rndChoice = rnd.randrange(0, 5)
             if rndChoice == 1:
-                imageToLoad = gui.Square0n()
+                loadImage = gui.Square0n()
             elif rndChoice == 2:
-                imageToLoad = gui.Square0i()
+                loadImage = gui.Square0i()
             elif rndChoice == 3:
-                imageToLoad = gui.Square0m()   
+                loadImage = gui.Square0m()   
             elif rndChoice == 4:
-                imageToLoad = gui.Square0n()
+                loadImage = gui.Square0n()
 
             # check mouse position in FIRST column
             if (mx >= 160) and (mx <= 224) and (my >= 125 and my <= 189):
-                gameWindow.blit(imageToLoad.surf, (160, 125))
+                gameWindow.blit(loadImage.surf, (160, 125))
             elif (mx >= 160) and (mx <= 224) and (my >= 189 and my <= 253):
-                gameWindow.blit(imageToLoad.surf, (160, 189))
+                gameWindow.blit(loadImage.surf, (160, 189))
             elif (mx >= 160) and (mx <= 224) and (my >= 253 and my <= 317):
-                gameWindow.blit(imageToLoad.surf, (160, 253))
+                gameWindow.blit(loadImage.surf, (160, 253))
             elif (mx >= 160) and (mx <= 224) and (my >= 317 and my <= 381):
-                gameWindow.blit(imageToLoad.surf, (160, 317))
+                gameWindow.blit(loadImage.surf, (160, 317))
 
             # check SECOND column
             if (mx >= 224) and (mx <= 288) and (my >= 125 and my <= 189):
-                gameWindow.blit(imageToLoad.surf, (224, 125))
+                gameWindow.blit(loadImage.surf, (224, 125))
             elif (mx >= 224) and (mx <= 288) and (my >= 189 and my <= 253):
-                gameWindow.blit(imageToLoad.surf, (224, 189))
+                gameWindow.blit(loadImage.surf, (224, 189))
             elif (mx >= 224) and (mx <= 288) and (my >= 253 and my <= 317):
-                gameWindow.blit(imageToLoad.surf, (224, 253))
+                gameWindow.blit(loadImage.surf, (224, 253))
             elif (mx >= 224) and (mx <= 288) and (my >= 317 and my <= 381):
-                gameWindow.blit(imageToLoad.surf, (224, 317))
+                gameWindow.blit(loadImage.surf, (224, 317))
                 
             # check THRID column
             if (mx >= 288) and (mx <= 352) and (my >= 125 and my <= 189):
-                gameWindow.blit(imageToLoad.surf, (288, 125))
+                gameWindow.blit(loadImage.surf, (288, 125))
             elif (mx >= 288) and (mx <= 352) and (my >= 189 and my <= 253):
-                gameWindow.blit(imageToLoad.surf, (288, 189))
+                gameWindow.blit(loadImage.surf, (288, 189))
             elif (mx >= 288) and (mx <= 352) and (my >= 253 and my <= 317):
-                gameWindow.blit(imageToLoad.surf, (288, 253))
+                gameWindow.blit(loadImage.surf, (288, 253))
             elif (mx >= 288) and (mx <= 352) and (my >= 317 and my <= 381):
-                gameWindow.blit(imageToLoad.surf, (288, 317))
+                gameWindow.blit(loadImage.surf, (288, 317))
 
             # check FORTH column
             if (mx >= 352) and (mx <= 416) and (my >= 125 and my <= 189):
-                gameWindow.blit(imageToLoad.surf, (352, 125))
+                gameWindow.blit(loadImage.surf, (352, 125))
             elif (mx >= 352) and (mx <= 416) and (my >= 189 and my <= 253):
-                gameWindow.blit(imageToLoad.surf, (352, 189))
+                gameWindow.blit(loadImage.surf, (352, 189))
             elif (mx >= 352) and (mx <= 416) and (my >= 253 and my <= 317):
-                gameWindow.blit(imageToLoad.surf, (352, 253))
+                gameWindow.blit(loadImage.surf, (352, 253))
             elif (mx >= 352) and (mx <= 416) and (my >= 317 and my <= 381):
-                gameWindow.blit(imageToLoad.surf, (352, 317))
+                gameWindow.blit(loadImage.surf, (352, 317))
                 
             # check FIFTH column
             if (mx >= 416) and (mx <= 480) and (my >= 125 and my <= 189):
-                gameWindow.blit(imageToLoad.surf, (416, 125))
+                gameWindow.blit(loadImage.surf, (416, 125))
             elif (mx >= 416) and (mx <= 480) and (my >= 189 and my <= 253):
-                gameWindow.blit(imageToLoad.surf, (416, 189))
+                gameWindow.blit(loadImage.surf, (416, 189))
             elif (mx >= 416) and (mx <= 480) and (my >= 253 and my <= 317):
-                gameWindow.blit(imageToLoad.surf, (416, 253))
+                gameWindow.blit(loadImage.surf, (416, 253))
             elif (mx >= 416) and (mx <= 480) and (my >= 317 and my <= 381):
-                gameWindow.blit(imageToLoad.surf, (416, 317))
+                gameWindow.blit(loadImage.surf, (416, 317))
