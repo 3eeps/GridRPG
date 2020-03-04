@@ -1,10 +1,5 @@
 # assets/gui/gui.py
-
-# modules
 import pygame
-
-SCREEN_WIDTH = 640
-SCREEN_HEIGHT = 480
 
 class Background0(pygame.sprite.Sprite):
     def __init__(self):
@@ -16,7 +11,17 @@ class Square0(pygame.sprite.Sprite):
         self.surf = pygame.image.load("assets/gui/themes/square0.png")
         self.rect = self.surf.get_rect()
 
-class Square02(pygame.sprite.Sprite):
+class Square0i(pygame.sprite.Sprite):
     def __init__(self):       
-        self.surf = pygame.image.load("assets/gui/themes/square0_click.png")
+        self.surf = pygame.image.load("assets/gui/themes/square0i.png")
+        self.rect = self.surf.get_rect()
+
+class Square0m(pygame.sprite.Sprite):
+    def __init__(self):       
+        self.surf = pygame.image.load("assets/gui/themes/square0m.png")
+        self.rect = self.surf.get_rect()
+
+class Square0n(pygame.sprite.Sprite):
+    def __init__(self):       
+        self.surf = pygame.image.load("assets/gui/themes/square0n.png")
         self.rect = self.surf.get_rect()
