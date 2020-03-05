@@ -1,0 +1,83 @@
+            
+
+
+
+
+            # prepare random item or monster on click
+            rndChoice = rnd.randrange(0, 5)
+            if rndChoice == 1:
+                loadImage = gui.Square0n()
+            elif rndChoice == 2:
+                loadImage = gui.Square0i()
+            elif rndChoice == 3:
+                loadImage = gui.Square0m()   
+            elif rndChoice == 4:
+                loadImage = gui.Square0n()# check mouse position in FIRST column
+            if (mx >= 160) and (mx <= 224) and (my >= 125 and my <= 189):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (160, 125))         
+            elif (mx >= 160) and (mx <= 224) and (my >= 189 and my <= 253):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (160, 189))
+            elif (mx >= 160) and (mx <= 224) and (my >= 253 and my <= 317):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (160, 253))
+            elif (mx >= 160) and (mx <= 224) and (my >= 317 and my <= 381):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (160, 317))
+
+            # check SECOND column
+            if (mx >= 224) and (mx <= 288) and (my >= 125 and my <= 189):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (224, 125))
+            elif (mx >= 224) and (mx <= 288) and (my >= 189 and my <= 253):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (224, 189))
+            elif (mx >= 224) and (mx <= 288) and (my >= 253 and my <= 317):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (224, 253))
+            elif (mx >= 224) and (mx <= 288) and (my >= 317 and my <= 381):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (224, 317))
+                
+            # check THRID column
+            if (mx >= 288) and (mx <= 352) and (my >= 125 and my <= 189):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (288, 125))
+            elif (mx >= 288) and (mx <= 352) and (my >= 189 and my <= 253):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (288, 189))
+            elif (mx >= 288) and (mx <= 352) and (my >= 253 and my <= 317):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (288, 253))
+            elif (mx >= 288) and (mx <= 352) and (my >= 317 and my <= 381):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (288, 317))
+
+            # check FORTH column
+            if (mx >= 352) and (mx <= 416) and (my >= 125 and my <= 189):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (352, 125))
+            elif (mx >= 352) and (mx <= 416) and (my >= 189 and my <= 253):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (352, 189))
+            elif (mx >= 352) and (mx <= 416) and (my >= 253 and my <= 317):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (352, 253))
+            elif (mx >= 352) and (mx <= 416) and (my >= 317 and my <= 381):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (352, 317))
+                
+            # check FIFTH column
+            if (mx >= 416) and (mx <= 480) and (my >= 125 and my <= 189):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (416, 125))
+            elif (mx >= 416) and (mx <= 480) and (my >= 189 and my <= 253):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (416, 189))
+            elif (mx >= 416) and (mx <= 480) and (my >= 253 and my <= 317):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (416, 253))
+            elif (mx >= 416) and (mx <= 480) and (my >= 317 and my <= 381):
+                data.gameTurns -= 1
+                gameWindow.blit(loadImage.surf, (416, 317))
