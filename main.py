@@ -14,12 +14,12 @@ board_back0.fill((83, 125, 117))
 gameWindow.blit(board_back0, (160, 145))
 
 # draw grid
-for sprite_pos in data.Grid.Coords:
-    gameWindow.blit(gui.Square0().surf, data.Grid.Coords[sprite_pos])
+for sprite_pos in data.Coords:
+    gameWindow.blit(gui.Square0().surf, data.Coords[sprite_pos])
 
 # main loop
 gameRunning = True
-while gameRunning == True and data.gameTurns > 0:
+while gameRunning == True:
     gameFramerate.tick(30)   
 
     pygame.display.flip()
@@ -38,10 +38,12 @@ while gameRunning == True and data.gameTurns > 0:
 
         # change grid image based on mouse position
         elif event.type == MOUSEBUTTONDOWN:
-            mx, my = pygame.mouse.get_pos()
-            compareDict = data.Grid.comparePos
 
-            for _ in compareDict:
-                if mx >= compareDict['11']['xy_pos'][[0]]:
-                    print ('click')
-
+            for square_id, data in data.gridInfo.items():
+                mx, my = pygame.mouse.get_pos()
+                for key in data:                  
+                    x1 = data[key][0][0]; x2 = data[key][0][1]                   
+                    y1 = data[key][1][0]; y2 = data[key][1][1]
+                    flag = data[key][2]
+                    if mx in range(x1, x2) and my in range(y1, y2):
+                        print(flag)
