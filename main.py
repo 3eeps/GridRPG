@@ -46,4 +46,6 @@ while gameRunning == True:
                     y1 = data[key][1][0]; y2 = data[key][1][1]
                     flag = data[key][2]
                     if mx in range(x1, x2) and my in range(y1, y2):
+                        # may need to copy dict, and iterate through 
+                        # it and update old dict
                         print(flag)
