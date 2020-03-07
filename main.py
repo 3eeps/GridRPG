@@ -14,8 +14,24 @@ board_back0.fill((83, 125, 117))
 gameWindow.blit(board_back0, (160, 145))
 
 # draw grid
-for sprite_pos in data.Coords:
-    gameWindow.blit(gui.Square0().surf, data.Coords[sprite_pos])
+#for sprite_pos in data.Coords:
+    #gameWindow.blit(gui.Square0().surf, data.Coords[sprite_pos])
+
+image1 = gui.Square0().surf
+
+grid = [[None] * 10 for _ in range(10)]
+for y in range(4):
+  for x in range(5):
+    coords = ((x + 2.5) * 64, (y + 1.9) * 64, 64, 64)
+    if grid[y][x]:  
+        gameWindow.blit(image1, coords)
+    else:
+        color1 = (170, 170, 170)
+        color2 = (85, 85, 85)
+
+    #gameWindow.blit(image1, coords)
+    # outline sprites
+    pygame.draw.rect(gameWindow, color2, coords, 4)
 
 # main loop
 gameRunning = True
@@ -38,9 +54,10 @@ while gameRunning == True:
 
         # change grid image based on mouse position
         elif event.type == MOUSEBUTTONDOWN:
-
+            
             for square_id, data in data.gridInfo.items():
                 mx, my = pygame.mouse.get_pos()
+                print(mx, my)
                 for key in data:                  
                     x1 = data[key][0][0]; x2 = data[key][0][1]                   
                     y1 = data[key][1][0]; y2 = data[key][1][1]
@@ -48,4 +65,4 @@ while gameRunning == True:
                     if mx in range(x1, x2) and my in range(y1, y2):
                         # may need to copy dict, and iterate through 
                         # it and update old dict
-                        print(flag)
+                        print('flag')
