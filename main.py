@@ -14,24 +14,10 @@ board_back0.fill((83, 125, 117))
 gameWindow.blit(board_back0, (160, 145))
 
 # draw grid
-#for sprite_pos in data.Coords:
-    #gameWindow.blit(gui.Square0().surf, data.Coords[sprite_pos])
+for sprite_pos in data.Grid.coords:
+    gameWindow.blit(gui.Square0().surf, data.Grid.coords[sprite_pos])
 
-image1 = gui.Square0().surf
 
-grid = [[None] * 10 for _ in range(10)]
-for y in range(4):
-  for x in range(5):
-    coords = ((x + 2.5) * 64, (y + 1.9) * 64, 64, 64)
-    if grid[y][x]:  
-        gameWindow.blit(image1, coords)
-    else:
-        color1 = (170, 170, 170)
-        color2 = (85, 85, 85)
-
-    #gameWindow.blit(image1, coords)
-    # outline sprites
-    pygame.draw.rect(gameWindow, color2, coords, 4)
 
 # main loop
 gameRunning = True
@@ -54,15 +40,14 @@ while gameRunning == True:
 
         # change grid image based on mouse position
         elif event.type == MOUSEBUTTONDOWN:
-            
-            for square_id, data in data.gridInfo.items():
-                mx, my = pygame.mouse.get_pos()
-                print(mx, my)
-                for key in data:                  
-                    x1 = data[key][0][0]; x2 = data[key][0][1]                   
-                    y1 = data[key][1][0]; y2 = data[key][1][1]
-                    flag = data[key][2]
-                    if mx in range(x1, x2) and my in range(y1, y2):
-                        # may need to copy dict, and iterate through 
-                        # it and update old dict
-                        print('flag')
+            mx, my = pygame.mouse.get_pos()
+            rangeDict = data.Grid.ranges
+
+            # compare mouse xy and replace image
+            for col in rangeDict:
+                if mx in range(rangeDict[col][0][0], rangeDict[col][0][1]) and my in range(rangeDict[col][1][0], rangeDict[col][1][1]) and rangeDict[col][2] == 0:
+                    # set flag to not replace image after first click
+                    rangeDict[col][2] = 1
+                    # replace image with random one
+                    gameWindow.blit(data.Grid.imageList[rnd.randrange(0, 4)].surf, data.Grid.coords[col])
+                    
