@@ -8,10 +8,10 @@ gameWindow = pygame.display.set_mode((data.SCREEN_WIDTH, data.SCREEN_HEIGHT))
 pygame.display.set_caption('GridRPG -dev')
 
 sprites = data.sprites
-ranges = data.Grid.ranges
-coords = data.Grid.coords
+ranges = data.ranges
+coords = data.coords
 gameWindow.blit(sprites['background0'], (0, 0))
-for sprite_pos in data.Grid.coords:
+for sprite_pos in data.coords:
     gameWindow.blit(sprites['square0'].convert(), coords[sprite_pos])
 
 gameRunning = True
@@ -23,8 +23,8 @@ while gameRunning == True:
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
                 gameRunning = False
-        elif event.type == QUIT:
-            gameRunning = False
+        elif event.type == pygame.QUIT:
+                gameRunning = False
 
         elif event.type == MOUSEBUTTONDOWN:
             mx, my = pygame.mouse.get_pos()
