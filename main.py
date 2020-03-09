@@ -32,6 +32,6 @@ while gameRunning == True:
             for col in ranges:
                 if mx in range(ranges[col][0][0], ranges[col][0][1]) and my in range(ranges[col][1][0], ranges[col][1][1]) and ranges[col][2] == 0:
                     ranges[col][2] = 1
-                    gameWindow.blit(data.spriteList[rnd.randrange(0, 3)], coords[col])
+                    gameWindow.blit(data.spriteList[rnd.randrange(0, 3)].convert(), coords[col])
 
     pygame.display.flip()
