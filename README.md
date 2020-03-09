@@ -1,2 +1,3 @@
 # GridRPG
-A simple rogue-like style game build with Pygame. 
+A simple rogue-like build with Pygame. Still a work in progress!
+
