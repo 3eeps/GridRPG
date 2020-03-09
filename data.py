@@ -1,14 +1,39 @@
 # grid.py
-import assets.gui.gui as gui, random as rnd
+import pygame, random as rnd
+
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 
 gameTurns = 256
 
+# sprite variables
+class Sprites0(): 
+
+    background0 = pygame.image.load('assets/images/0/background0.png')
+    square0 = pygame.image.load('assets/images/0/square0.png')
+    square0n = pygame.image.load('assets/images/0/square0n.png')
+    square0e = pygame.image.load('assets/images/0/square0e.png')
+    square0i = pygame.image.load('assets/images/0/square0i.png')
+    square0m = pygame.image.load('assets/images/0/square0m.png')
+    square0b = pygame.image.load('assets/images/0/square0b.png')
+
+    # Sprites listed for grid
+    imgList = [square0n, square0e, square0i, square0m, square0b]
+
 class Grid():
 
-    # grid image list
-    imageList = [gui.Square0(), gui.Square0i(), gui.Square0m(), gui.Square0n()]
+    def randomizeSquares():
+        items = rnd.randrange(2, 3)
+        monsters = rnd.randrange(3, 5)
+        bosses = rnd.randrange(1, 2)
+        empty = rnd.randrange(5, 10)
+        exit_door = 1
+
+        total = items + monsters + bosses + empty + exit_door
+        if total > 20:
+            randomizeSquares()
+        else:
+            return total
 
     coords = {
     # column 1
@@ -65,3 +90,5 @@ class Grid():
         53: [(416, 480), (253, 317), 0],
         54: [(416, 480), (317, 381), 0],
 } 
+
+print(Grid.randomizeSquares())
