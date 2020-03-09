@@ -10,7 +10,7 @@ pygame.display.set_caption('GridRPG -dev')
 sprites = data.sprites
 ranges = data.ranges
 coords = data.coords
-gameWindow.blit(sprites['background0'], (0, 0))
+gameWindow.blit(sprites['background0'].convert(), (0, 0))
 for sprite_pos in data.coords:
     gameWindow.blit(sprites['square0'].convert(), coords[sprite_pos])
 
