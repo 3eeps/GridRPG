@@ -45,10 +45,10 @@ while gameRunning == True:
                     if gridData[loc][3] == 1:
                         gameWindow.blit(sprTheme0['exit0'].convert(), gridCoords[loc])
                     if gridData[loc][3] == 2:
-                        gameWindow.blit(sprTheme0['item0'].convert(), gridCoords[loc])
+                        gameWindow.blit(sprTheme0['boss0'].convert(), gridCoords[loc])
                     if gridData[loc][3] == 3:
                         gameWindow.blit(sprTheme0['enemy0'].convert(), gridCoords[loc])
                     if gridData[loc][3] == 4:
-                        gameWindow.blit(sprTheme0['boss0'].convert(), gridCoords[loc])
+                        gameWindow.blit(sprTheme0['item0'].convert(), gridCoords[loc])
                     
     pygame.display.flip()
