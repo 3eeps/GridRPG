@@ -1,24 +1,18 @@
 # gridrpg-master/data.py
-import pygame, random as rnd
+from pygame import image
 
 gameTurns = 256
 
-objectData = {
-'emptySpace': (10, 0),
-'exitDoor': (1, 1),
-'bosses': (1, 2),
-'enemies': (5, 3),
-'items': (3, 4)}
-
 sprTheme0 = {
-'background0': pygame.image.load('assets/images/0/background0.png'),
-'square0': pygame.image.load('assets/images/0/square0.png'),
-'empty0': pygame.image.load('assets/images/0/square0n.png'),
-'exit0': pygame.image.load('assets/images/0/square0e.png'),
-'item0': pygame.image.load('assets/images/0/square0i.png'),
-'enemy0': pygame.image.load('assets/images/0/square0m.png'),
-'boss0': pygame.image.load('assets/images/0/square0b.png')}
+'background0': image.load('assets/images/0/background0.png'),
+'square0': image.load('assets/images/0/square0.png'),
+'empty0': image.load('assets/images/0/square0n.png'),
+'exit0': image.load('assets/images/0/square0e.png'),
+'item0': image.load('assets/images/0/square0i.png'),
+'enemy0': image.load('assets/images/0/square0m.png'),
+'boss0': image.load('assets/images/0/square0b.png')}
 
+# emptyspace: 0, exitdoor: 1, bosses: 2, enemies: 3, items: 4
 objectList = [0, 0, 0, 0, 0, 1, 2, 3, 3, 3, 3, 3, 4, 4, 4, 0, 0, 0, 0, 0]
 
 gridCoords = {
