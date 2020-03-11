@@ -15,17 +15,17 @@ objectList = data.objectList
 gameTurns = data.gameTurns
 
 func.randomize_objects()
-
 gameWindow.blit(sprTheme0['background0'].convert(), (0, 0))
 for spr in gridCoords:
     gameWindow.blit(sprTheme0['square0'].convert(), gridCoords[spr])
 
-turnText = gameFont.render(f'{gameTurns} turns left', False, (178, 93, 77))
-
 gameRunning = True
-while gameRunning == True:
+while gameRunning == True and gameTurns > 0:
     gameFramerate.tick(30)
 
+    gameWindow.fill((103, 145, 137), (160, 380, 112, 14))
+    turnText = gameFont.render(f'{gameTurns} turns left', False, (178, 93, 77))
+    
     for event in pygame.event.get():
 
         if event.type == KEYDOWN:
@@ -36,12 +36,11 @@ while gameRunning == True:
  
         elif event.type == MOUSEBUTTONDOWN:
             mx, my = pygame.mouse.get_pos()
-            gameTurns -= 1
-            gameWindow.blit(turnText, (160, 110))
-            
+               
             for loc in gridData:
                 if mx in range(gridData[loc][0][0], gridData[loc][0][1]) and my in range(gridData[loc][1][0], gridData[loc][1][1]) and gridData[loc][2] == 0:
                     gridData[loc][2] = 1
+                    gameTurns -= 1
                     if gridData[loc][3] == 0:
                         gameWindow.blit(sprTheme0['empty0'].convert(), gridCoords[loc])
                     if gridData[loc][3] == 1:
@@ -53,5 +52,5 @@ while gameRunning == True:
                     if gridData[loc][3] == 4:
                         gameWindow.blit(sprTheme0['item0'].convert(), gridCoords[loc])
        
-    gameWindow.blit(turnText, (160, 110))
+    gameWindow.blit(turnText, (160, 380))
     pygame.display.flip()
