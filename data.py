@@ -2,6 +2,7 @@
 from pygame import image
 
 gameTurns = 256
+playerHealth = 100
 
 sprTheme0 = {
 'background0': image.load('assets/images/0/background0.png'),

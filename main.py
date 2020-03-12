@@ -6,13 +6,14 @@ pygame.init(); pygame.font.init();
 gameWindow = pygame.display.set_mode((640, 480)); 
 gameFramerate = pygame.time.Clock()
 pygame.display.set_caption('Gridwerks -dev')
-gameFont = pygame.font.Font('assets/font/ARCADECLASSIC.TTF', 16)
+gameFont = pygame.font.Font('assets/font/ARCADECLASSIC.TTF', 18)
 
 sprTheme0 = data.sprTheme0
 gridData = data.gridData
 gridCoords = data.gridCoords
 objectList = data.objectList
 gameTurns = data.gameTurns
+playerHealth = data.playerHealth
 
 func.randomize_objects()
 gameWindow.blit(sprTheme0['background0'].convert(), (0, 0))
@@ -23,9 +24,8 @@ gameRunning = True
 while gameRunning == True and gameTurns > 0:
     gameFramerate.tick(30)
 
-    gameWindow.fill((103, 145, 137), (160, 380, 112, 14))
-    turnText = gameFont.render(f'{gameTurns} turns left', False, (178, 93, 77))
-    
+    guiTurns = gameFont.render(f'{gameTurns} turns  left', False, (178, 93, 77))
+    guiHealth = gameFont.render(f'{playerHealth} hp  left', False, (178, 93, 77))
     for event in pygame.event.get():
 
         if event.type == KEYDOWN:
@@ -52,5 +52,7 @@ while gameRunning == True and gameTurns > 0:
                     if gridData[loc][3] == 4:
                         gameWindow.blit(sprTheme0['item0'].convert(), gridCoords[loc])
        
-    gameWindow.blit(turnText, (160, 380))
+    gameWindow.fill((103, 145, 137), (160, 380, 400, 14))
+    gameWindow.blit(guiTurns, (170, 380))
+    gameWindow.blit(guiHealth, (385, 380))
     pygame.display.flip()
