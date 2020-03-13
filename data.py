@@ -3,10 +3,10 @@ from pygame import image
 
 gameTurns = 256
 playerHealth = 100
+background0 = image.load('assets/images/0/background0.png')
 
 sprTheme0 = {
-'background0': image.load('assets/images/0/background0.png'),
-'square0': image.load('assets/images/0/square0.png'),
+'default0': image.load('assets/images/0/square0.png'),
 'empty0': image.load('assets/images/0/square0n.png'),
 'exit0': image.load('assets/images/0/square0e.png'),
 'item0': image.load('assets/images/0/square0i.png'),

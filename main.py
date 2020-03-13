@@ -1,5 +1,5 @@
 # grid-master/main.py
-import pygame, data, functions as func
+import pygame, data, random as rnd
 
 from pygame.locals import *
 pygame.init(); pygame.font.init(); 
@@ -15,10 +15,32 @@ objectList = data.objectList
 gameTurns = data.gameTurns
 playerHealth = data.playerHealth
 
-func.randomize_objects()
-gameWindow.blit(sprTheme0['background0'].convert(), (0, 0))
+def randomize_objects():
+    rnd.shuffle(objectList)
+    for gridPos, obj in zip(gridData, objectList):
+        gridData[gridPos][3] = obj
+
+class Sprite(pygame.sprite.Sprite):
+    
+    def __init__(self, image, flag):
+        self.image = image
+        self.flag = flag
+        self.surf = image.get_rect()
+
+    def set_flag (self):
+        if self.flag == 'clickable':
+            self.flag = 0
+        elif self.flag == 'noclick':
+            self.flag = 1
+        elif self.flag == 'item' or 'enemy' or 'exit':
+            self.flag == 2
+
+randomize_objects()
+sprite0 = Sprite(sprTheme0['default0'], 'clickable')
+
+gameWindow.blit(data.background0.convert(), (0, 0))
 for spr in gridCoords:
-    gameWindow.blit(sprTheme0['square0'].convert(), gridCoords[spr])
+    gameWindow.blit(sprite0.image, gridCoords[spr])
 
 gameRunning = True
 while gameRunning == True and gameTurns > 0:
