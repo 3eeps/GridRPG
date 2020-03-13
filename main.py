@@ -28,11 +28,7 @@ class GridObj(pygame.sprite.Sprite):
         self.position = position
 
     def set_flag (self):
-        if self.flag == 'can_click':
-            self.flag = 0
-        elif self.flag == 'no_click':
-            self.flag = 1
-        return self.flag
+        gridData[loc][2] = self.flag
 
     def draw(self, surface, position):
         surface.blit(self.image, position)
@@ -67,18 +63,18 @@ while gameRunning == True and gameTurns > 0:
             mx, my = pygame.mouse.get_pos()
                
             for loc in gridData:
-                if mx in range(gridData[loc][0][0], gridData[loc][0][1]) and my in range(gridData[loc][1][0], gridData[loc][1][1]) and gridData[loc][2] == 0:
+                if mx in range(gridData[loc][0][0], gridData[loc][0][1]) and my in range(gridData[loc][1][0], gridData[loc][1][1]) and gridData[loc][2] == 'can_click':
                     gameTurns -= 1
                     if gridData[loc][3] == 0:
-                        emptySq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = emptySq.set_flag()              
+                        emptySq.draw(gameWindow, gridCoords[loc]); emptySq.set_flag()             
                     if gridData[loc][3] == 1:
-                        exitSq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = exitSq.set_flag()
+                        exitSq.draw(gameWindow, gridCoords[loc]); exitSq.set_flag()
                     if gridData[loc][3] == 2:
-                        bossSq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = bossSq.set_flag()
+                        bossSq.draw(gameWindow, gridCoords[loc]); bossSq.set_flag()
                     if gridData[loc][3] == 3:
-                        enemySq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = enemySq.set_flag()
+                        enemySq.draw(gameWindow, gridCoords[loc]); enemySq.set_flag()
                     if gridData[loc][3] == 4:
-                        itemSq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = itemSq.set_flag()
+                        itemSq.draw(gameWindow, gridCoords[loc]); itemSq.set_flag()
        
     gameWindow.fill((103, 145, 137), (160, 380, 400, 14))
     gameWindow.blit(guiTurns, (170, 380))
