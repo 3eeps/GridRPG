@@ -8,7 +8,8 @@ gameFramerate = pygame.time.Clock()
 pygame.display.set_caption('Gridwerks -dev')
 gameFont = pygame.font.Font('assets/font/ARCADECLASSIC.TTF', 18)
 
-sprTheme0 = data.sprTheme0
+sprTheme = data.sprTheme0
+background = data.background0
 gridData = data.gridData
 gridCoords = data.gridCoords
 objectList = data.objectList
@@ -20,27 +21,33 @@ def randomize_objects():
     for gridPos, obj in zip(gridData, objectList):
         gridData[gridPos][3] = obj
 
-class Sprite(pygame.sprite.Sprite):
-    
-    def __init__(self, image, flag):
+class GridObj(pygame.sprite.Sprite):
+    def __init__(self, image, flag, position = (0, 0)):
         self.image = image
         self.flag = flag
-        self.surf = image.get_rect()
+        self.position = position
 
     def set_flag (self):
-        if self.flag == 'clickable':
+        if self.flag == 'can_click':
             self.flag = 0
-        elif self.flag == 'noclick':
+        elif self.flag == 'no_click':
             self.flag = 1
-        elif self.flag == 'item' or 'enemy' or 'exit':
-            self.flag == 2
+        return self.flag
+
+    def draw(self, surface, position):
+        surface.blit(self.image, position)
 
 randomize_objects()
-sprite0 = Sprite(sprTheme0['default0'], 'clickable')
+defaultSq = GridObj(sprTheme['default0'], 'can_click')
+emptySq = GridObj(sprTheme['empty0'], 'no_click')
+exitSq = GridObj(sprTheme['exit0'], 'can_click')
+itemSq = GridObj(sprTheme['item0'], 'can_click')
+enemySq = GridObj(sprTheme['enemy0'], 'can_click')
+bossSq = GridObj(sprTheme['boss0'], 'can_click')
 
-gameWindow.blit(data.background0.convert(), (0, 0))
+gameWindow.blit(background.convert(), (0, 0))
 for spr in gridCoords:
-    gameWindow.blit(sprite0.image, gridCoords[spr])
+    gameWindow.blit(defaultSq.image.convert(), gridCoords[spr])
 
 gameRunning = True
 while gameRunning == True and gameTurns > 0:
@@ -61,18 +68,17 @@ while gameRunning == True and gameTurns > 0:
                
             for loc in gridData:
                 if mx in range(gridData[loc][0][0], gridData[loc][0][1]) and my in range(gridData[loc][1][0], gridData[loc][1][1]) and gridData[loc][2] == 0:
-                    gridData[loc][2] = 1
                     gameTurns -= 1
                     if gridData[loc][3] == 0:
-                        gameWindow.blit(sprTheme0['empty0'].convert(), gridCoords[loc])
+                        emptySq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = emptySq.set_flag()              
                     if gridData[loc][3] == 1:
-                        gameWindow.blit(sprTheme0['exit0'].convert(), gridCoords[loc])
+                        exitSq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = exitSq.set_flag()
                     if gridData[loc][3] == 2:
-                        gameWindow.blit(sprTheme0['boss0'].convert(), gridCoords[loc])
+                        bossSq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = bossSq.set_flag()
                     if gridData[loc][3] == 3:
-                        gameWindow.blit(sprTheme0['enemy0'].convert(), gridCoords[loc])
+                        enemySq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = enemySq.set_flag()
                     if gridData[loc][3] == 4:
-                        gameWindow.blit(sprTheme0['item0'].convert(), gridCoords[loc])
+                        itemSq.draw(gameWindow, gridCoords[loc]); gridData[loc][2] = itemSq.set_flag()
        
     gameWindow.fill((103, 145, 137), (160, 380, 400, 14))
     gameWindow.blit(guiTurns, (170, 380))

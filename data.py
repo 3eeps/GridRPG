@@ -1,5 +1,5 @@
 # gridrpg-master/data.py
-from pygame import image
+from pygame import image, sprite
 
 gameTurns = 256
 playerHealth = 100
@@ -12,6 +12,7 @@ sprTheme0 = {
 'item0': image.load('assets/images/0/square0i.png'),
 'enemy0': image.load('assets/images/0/square0m.png'),
 'boss0': image.load('assets/images/0/square0b.png')}
+
 
 # emptyspace: 0, exitdoor: 1, bosses: 2, enemies: 3, items: 4
 objectList = [0, 0, 0, 0, 0, 1, 2, 3, 3, 3, 3, 3, 4, 4, 4, 0, 0, 0, 0, 0]
